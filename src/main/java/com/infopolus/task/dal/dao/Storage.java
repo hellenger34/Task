@@ -1,7 +1,8 @@
-package com.infopolus.task.util;
+package com.infopolus.task.dao;
 
 import com.infopolus.task.domain.Car;
-import com.infopolus.task.domain.Contact;
+import com.infopolus.task.domain.Person;
+import com.infopolus.task.util.DataProvider;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Scope;
@@ -21,7 +22,7 @@ public class Storage {
     @NonNull
     private final DataProvider dataProvider;
 
-    public static final Map<String, Contact> CONTACTS_STORAGE = new HashMap<>();
+    public static final Map<String, Person> USERS_STORAGE = new HashMap<>();
     public static final Map<String, Car> CARS_STORAGE = new HashMap<>();
 
     @PostConstruct
@@ -31,9 +32,14 @@ public class Storage {
 
         fillInContact(names, cars);
         fillInCars(cars);
+    }
 
-        System.out.println(CONTACTS_STORAGE);
-        System.out.println(CARS_STORAGE);
+    public List<Car> findAllCars() {
+        return new ArrayList<>(CARS_STORAGE.values());
+    }
+
+    public List<Person> findAllUsers() {
+        return new ArrayList<>(USERS_STORAGE.values());
     }
 
     private void fillInContact(List<String> names, final List<Car> cars) {
@@ -44,7 +50,7 @@ public class Storage {
         names.forEach(name -> {
             final String id = UUID.randomUUID().toString();
             final List<String> ownedCars = getRandomNumberOfCars(carsLeft);
-            CONTACTS_STORAGE.put(id, new Contact(id, name, ownedCars));
+            USERS_STORAGE.put(id, new Person(id, name, ownedCars));
             ownedCars.forEach(carsLeft::remove);
         });
     }
