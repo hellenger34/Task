@@ -1,4 +1,4 @@
-package com.infopolus.task.dao;
+package com.infopolus.task.dal.dao;
 
 import com.infopolus.task.domain.Car;
 import com.infopolus.task.domain.Person;

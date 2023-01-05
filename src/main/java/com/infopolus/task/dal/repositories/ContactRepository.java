@@ -1,10 +1,10 @@
-package com.infopolus.task.repositories;
+package com.infopolus.task.dal.repositories;
 
 import com.infopolus.task.domain.Car;
 import com.infopolus.task.domain.Person;
 import com.infopolus.task.domain.api.Contact;
 import com.infopolus.task.domain.mappers.ContactMapper;
-import com.infopolus.task.dao.Storage;
+import com.infopolus.task.dal.dao.Storage;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

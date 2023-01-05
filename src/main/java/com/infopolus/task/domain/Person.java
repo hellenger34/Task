@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class User {
+public class Person {
 
     private String id;
     private String name;
